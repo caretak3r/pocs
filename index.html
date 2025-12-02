@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proof of Concepts Collection</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: white;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .pocs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .poc-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .poc-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+
+        .poc-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .poc-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .poc-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .poc-link {
+            display: inline-flex;
+            align-items: center;
+            color: #667eea;
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .poc-link:hover {
+            color: #764ba2;
+        }
+
+        .poc-link::after {
+            content: '→';
+            margin-left: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .poc-card:hover .poc-link::after {
+            transform: translateX(5px);
+        }
+
+        .footer {
+            text-align: center;
+            color: white;
+            opacity: 0.8;
+            margin-top: 3rem;
+        }
+
+        .github-link {
+            display: inline-flex;
+            align-items: center;
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .github-link:hover {
+            opacity: 1;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            color: white;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+            
+            .stats {
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Proof of Concepts</h1>
+            <p class="subtitle">A collection of experimental projects and technical explorations</p>
+        </header>
+
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-number" id="poc-count">1</div>
+                <div class="stat-label">Total PoCs</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number" id="last-updated">2024</div>
+                <div class="stat-label">Last Updated</div>
+            </div>
+        </div>
+
+        <main class="pocs-grid" id="pocs-container">
+            <!-- PoCs will be dynamically loaded here -->
+        </main>
+
+        <footer class="footer">
+            <p>Built with ❤️ for experimentation and learning</p>
+            <a href="https://github.com/rohit-pocs/pocs" class="github-link">
+                View on GitHub
+            </a>
+        </footer>
+    </div>
+
+    <script>
+        // PoC data - this will be populated dynamically
+        const pocs = [
+            {
+                name: "Sentinel UI",
+                description: "A comprehensive security dashboard monitoring and management interface.",
+                path: "navigation-proxy.html",
+                tags: ["Security", "Dashboard", "Monitoring"]
+            }
+        ];
+
+        function createPoCCard(poc) {
+            const tags = poc.tags.map(tag => `<span style="background: #f0f0f0; padding: 0.2rem 0.5rem; border-radius: 12px; font-size: 0.8rem; margin-right: 0.5rem;">${tag}</span>`).join('');
+            
+            return `
+                <article class="poc-card" href="${poc.path}">
+                    <h2 class="poc-title">${poc.name}</h2>
+                    <p class="poc-description">${poc.description}</p>
+                    <div style="margin-bottom: 1rem;">${tags}</div>
+                    <a href="${poc.path}" class="poc-link">Explore Project</a>
+                </article>
+            `;
+        }
+
+        function loadPoCs() {
+            const container = document.getElementById('pocs-container');
+            container.innerHTML = pocs.map(poc => createPoCCard(poc)).join('');
+            
+            // Update stats
+            document.getElementById('poc-count').textContent = pocs.length;
+            document.getElementById('last-updated').textContent = new Date().getFullYear();
+        }
+
+        // Load PoCs when DOM is ready
+        document.addEventListener('DOMContentLoaded', loadPoCs);
+
+        // Dynamically discover PoCs by scanning the current directory
+        async function discoverPoCs() {
+            try {
+                // This would be implemented server-side or via a build script
+                // For now, we have the hardcoded data above
+                console.log('PoCs loaded successfully');
+            } catch (error) {
+                console.error('Error loading PoCs:', error);
+            }
+        }
+    </script>
+</body>
+</html>
