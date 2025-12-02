@@ -1,0 +1,707 @@
+<html lang="en"><head>
+
+<script class="injected-ffc2e83d85">
+(function(){'use strict';function q(b){var c=0;return function(){return c<b.length?{done:!1,value:b[c++]}:{done:!0}}}function t(b){var c=typeof Symbol!="undefined"&&Symbol.iterator&&b[Symbol.iterator];if(c)return c.call(b);if(typeof b.length=="number")return{next:q(b)};throw Error(String(b)+" is not an iterable or ArrayLike");}var u=typeof Object.defineProperties=="function"?Object.defineProperty:function(b,c,g){if(b==Array.prototype||b==Object.prototype)return b;b[c]=g.value;return b};
+function v(b){b=["object"==typeof globalThis&&globalThis,b,"object"==typeof window&&window,"object"==typeof self&&self,"object"==typeof global&&global];for(var c=0;c<b.length;++c){var g=b[c];if(g&&g.Math==Math)return g}throw Error("Cannot find global object");}var w=v(this);function x(b,c){if(c)a:{var g=w;b=b.split(".");for(var h=0;h<b.length-1;h++){var l=b[h];if(!(l in g))break a;g=g[l]}b=b[b.length-1];h=g[b];c=c(h);c!=h&&c!=null&&u(g,b,{configurable:!0,writable:!0,value:c})}}
+function y(){this.j=!1;this.g=null;this.u=void 0;this.h=1;this.v=this.l=0;this.i=null}function z(b){if(b.j)throw new TypeError("Generator is already running");b.j=!0}y.prototype.o=function(b){this.u=b};function A(b,c){b.i={I:c,J:!0};b.h=b.l||b.v}y.prototype.return=function(b){this.i={return:b};this.h=this.v};function B(b){this.g=new y;this.h=b}function E(b,c){z(b.g);var g=b.g.g;if(g)return F(b,"return"in g?g["return"]:function(h){return{value:h,done:!0}},c,b.g.return);b.g.return(c);return G(b)}
+function F(b,c,g,h){try{var l=c.call(b.g.g,g);if(!(l instanceof Object))throw new TypeError("Iterator result "+l+" is not an object");if(!l.done)return b.g.j=!1,l;var m=l.value}catch(f){return b.g.g=null,A(b.g,f),G(b)}b.g.g=null;h.call(b.g,m);return G(b)}function G(b){for(;b.g.h;)try{var c=b.h(b.g);if(c)return b.g.j=!1,{value:c.value,done:!1}}catch(g){b.g.u=void 0,A(b.g,g)}b.g.j=!1;if(b.g.i){c=b.g.i;b.g.i=null;if(c.J)throw c.I;return{value:c.return,done:!0}}return{value:void 0,done:!0}}
+function H(b){this.next=function(c){z(b.g);b.g.g?c=F(b,b.g.g.next,c,b.g.o):(b.g.o(c),c=G(b));return c};this.throw=function(c){z(b.g);b.g.g?c=F(b,b.g.g["throw"],c,b.g.o):(A(b.g,c),c=G(b));return c};this.return=function(c){return E(b,c)};this[Symbol.iterator]=function(){return this}}function I(b){function c(h){return b.next(h)}function g(h){return b.throw(h)}return new Promise(function(h,l){function m(f){f.done?h(f.value):Promise.resolve(f.value).then(c,g).then(m,l)}m(b.next())})}
+x("Symbol",function(b){function c(m){if(this instanceof c)throw new TypeError("Symbol is not a constructor");return new g(h+(m||"")+"_"+l++,m)}function g(m,f){this.g=m;u(this,"description",{configurable:!0,writable:!0,value:f})}if(b)return b;g.prototype.toString=function(){return this.g};var h="jscomp_symbol_"+(Math.random()*1E9>>>0)+"_",l=0;return c});
+x("Symbol.iterator",function(b){if(b)return b;b=Symbol("Symbol.iterator");u(Array.prototype,b,{configurable:!0,writable:!0,value:function(){return J(q(this))}});return b});function J(b){b={next:b};b[Symbol.iterator]=function(){return this};return b}
+x("Promise",function(b){function c(f){this.h=0;this.i=void 0;this.g=[];this.u=!1;var a=this.j();try{f(a.resolve,a.reject)}catch(d){a.reject(d)}}function g(){this.g=null}function h(f){return f instanceof c?f:new c(function(a){a(f)})}if(b)return b;g.prototype.h=function(f){if(this.g==null){this.g=[];var a=this;this.i(function(){a.l()})}this.g.push(f)};var l=w.setTimeout;g.prototype.i=function(f){l(f,0)};g.prototype.l=function(){for(;this.g&&this.g.length;){var f=this.g;this.g=[];for(var a=0;a<f.length;++a){var d=
+f[a];f[a]=null;try{d()}catch(e){this.j(e)}}}this.g=null};g.prototype.j=function(f){this.i(function(){throw f;})};c.prototype.j=function(){function f(e){return function(k){d||(d=!0,e.call(a,k))}}var a=this,d=!1;return{resolve:f(this.D),reject:f(this.l)}};c.prototype.D=function(f){if(f===this)this.l(new TypeError("A Promise cannot resolve to itself"));else if(f instanceof c)this.G(f);else{a:switch(typeof f){case "object":var a=f!=null;break a;case "function":a=!0;break a;default:a=!1}a?this.C(f):this.o(f)}};
+c.prototype.C=function(f){var a=void 0;try{a=f.then}catch(d){this.l(d);return}typeof a=="function"?this.H(a,f):this.o(f)};c.prototype.l=function(f){this.v(2,f)};c.prototype.o=function(f){this.v(1,f)};c.prototype.v=function(f,a){if(this.h!=0)throw Error("Cannot settle("+f+", "+a+"): Promise already settled in state"+this.h);this.h=f;this.i=a;this.h===2&&this.F();this.K()};c.prototype.F=function(){var f=this;l(function(){if(f.B()){var a=w.console;typeof a!=="undefined"&&a.error(f.i)}},1)};c.prototype.B=
+function(){if(this.u)return!1;var f=w.CustomEvent,a=w.Event,d=w.dispatchEvent;if(typeof d==="undefined")return!0;typeof f==="function"?f=new f("unhandledrejection",{cancelable:!0}):typeof a==="function"?f=new a("unhandledrejection",{cancelable:!0}):(f=w.document.createEvent("CustomEvent"),f.initCustomEvent("unhandledrejection",!1,!0,f));f.promise=this;f.reason=this.i;return d(f)};c.prototype.K=function(){if(this.g!=null){for(var f=0;f<this.g.length;++f)m.h(this.g[f]);this.g=null}};var m=new g;c.prototype.G=
+function(f){var a=this.j();f.A(a.resolve,a.reject)};c.prototype.H=function(f,a){var d=this.j();try{f.call(a,d.resolve,d.reject)}catch(e){d.reject(e)}};c.prototype.then=function(f,a){function d(n,r){return typeof n=="function"?function(C){try{e(n(C))}catch(D){k(D)}}:r}var e,k,p=new c(function(n,r){e=n;k=r});this.A(d(f,e),d(a,k));return p};c.prototype.catch=function(f){return this.then(void 0,f)};c.prototype.A=function(f,a){function d(){switch(e.h){case 1:f(e.i);break;case 2:a(e.i);break;default:throw Error("Unexpected state: "+
+e.h);}}var e=this;this.g==null?m.h(d):this.g.push(d);this.u=!0};c.resolve=h;c.reject=function(f){return new c(function(a,d){d(f)})};c.race=function(f){return new c(function(a,d){for(var e=t(f),k=e.next();!k.done;k=e.next())h(k.value).A(a,d)})};c.all=function(f){var a=t(f),d=a.next();return d.done?h([]):new c(function(e,k){function p(C){return function(D){n[C]=D;r--;r==0&&e(n)}}var n=[],r=0;do n.push(void 0),r++,h(d.value).A(p(n.length-1),k),d=a.next();while(!d.done)})};return c});
+function K(b,c){return Object.prototype.hasOwnProperty.call(b,c)}x("Object.is",function(b){return b?b:function(c,g){return c===g?c!==0||1/c===1/g:c!==c&&g!==g}});x("Array.prototype.includes",function(b){return b?b:function(c,g){var h=this;h instanceof String&&(h=String(h));var l=h.length;g=g||0;for(g<0&&(g=Math.max(g+l,0));g<l;g++){var m=h[g];if(m===c||Object.is(m,c))return!0}return!1}});
+x("String.prototype.includes",function(b){return b?b:function(c,g){if(this==null)throw new TypeError("The 'this' value for String.prototype.includes must not be null or undefined");if(c instanceof RegExp)throw new TypeError("First argument to String.prototype.includes must not be a regular expression");return this.indexOf(c,g||0)!==-1}});
+x("WeakMap",function(b){function c(d){this.g=(a+=Math.random()+1).toString();if(d){d=t(d);for(var e;!(e=d.next()).done;)e=e.value,this.set(e[0],e[1])}}function g(){}function h(d){var e=typeof d;return e==="object"&&d!==null||e==="function"}function l(d){if(!K(d,f)){var e=new g;u(d,f,{value:e})}}function m(d){var e=Object[d];e&&(Object[d]=function(k){if(k instanceof g)return k;Object.isExtensible(k)&&l(k);return e(k)})}if(function(){if(!b||!Object.seal)return!1;try{var d=Object.seal({}),e=Object.seal({}),
+k=new b([[d,2],[e,3]]);if(k.get(d)!=2||k.get(e)!=3)return!1;k.delete(d);k.set(e,4);return!k.has(d)&&k.get(e)==4}catch(p){return!1}}())return b;var f="$jscomp_hidden_"+Math.random();m("freeze");m("preventExtensions");m("seal");var a=0;c.prototype.set=function(d,e){if(!h(d))throw Error("Invalid WeakMap key");l(d);if(!K(d,f))throw Error("WeakMap key fail: "+d);d[f][this.g]=e;return this};c.prototype.get=function(d){return h(d)&&K(d,f)?d[f][this.g]:void 0};c.prototype.has=function(d){return h(d)&&K(d,
+f)&&K(d[f],this.g)};c.prototype.delete=function(d){return h(d)&&K(d,f)&&K(d[f],this.g)?delete d[f][this.g]:!1};return c});
+x("Map",function(b){function c(){var a={};return a.m=a.next=a.head=a}function g(a,d){var e=a[1];return J(function(){if(e){for(;e.head!=a[1];)e=e.m;for(;e.next!=e.head;)return e=e.next,{done:!1,value:d(e)};e=null}return{done:!0,value:void 0}})}function h(a,d){var e=d&&typeof d;e=="object"||e=="function"?m.has(d)?e=m.get(d):(e=""+ ++f,m.set(d,e)):e="p_"+d;var k=a[0][e];if(k&&K(a[0],e))for(a=0;a<k.length;a++){var p=k[a];if(d!==d&&p.key!==p.key||d===p.key)return{id:e,list:k,index:a,entry:p}}return{id:e,
+list:k,index:-1,entry:void 0}}function l(a){this[0]={};this[1]=c();this.size=0;if(a){a=t(a);for(var d;!(d=a.next()).done;)d=d.value,this.set(d[0],d[1])}}if(function(){if(!b||typeof b!="function"||!b.prototype.entries||typeof Object.seal!="function")return!1;try{var a=Object.seal({x:4}),d=new b(t([[a,"s"]]));if(d.get(a)!="s"||d.size!=1||d.get({x:4})||d.set({x:4},"t")!=d||d.size!=2)return!1;var e=d.entries(),k=e.next();if(k.done||k.value[0]!=a||k.value[1]!="s")return!1;k=e.next();return k.done||k.value[0].x!=
+4||k.value[1]!="t"||!e.next().done?!1:!0}catch(p){return!1}}())return b;var m=new WeakMap;l.prototype.set=function(a,d){a=a===0?0:a;var e=h(this,a);e.list||(e.list=this[0][e.id]=[]);e.entry?e.entry.value=d:(e.entry={next:this[1],m:this[1].m,head:this[1],key:a,value:d},e.list.push(e.entry),this[1].m.next=e.entry,this[1].m=e.entry,this.size++);return this};l.prototype.delete=function(a){a=h(this,a);return a.entry&&a.list?(a.list.splice(a.index,1),a.list.length||delete this[0][a.id],a.entry.m.next=a.entry.next,
+a.entry.next.m=a.entry.m,a.entry.head=null,this.size--,!0):!1};l.prototype.clear=function(){this[0]={};this[1]=this[1].m=c();this.size=0};l.prototype.has=function(a){return!!h(this,a).entry};l.prototype.get=function(a){return(a=h(this,a).entry)&&a.value};l.prototype.entries=function(){return g(this,function(a){return[a.key,a.value]})};l.prototype.keys=function(){return g(this,function(a){return a.key})};l.prototype.values=function(){return g(this,function(a){return a.value})};l.prototype.forEach=
+function(a,d){for(var e=this.entries(),k;!(k=e.next()).done;)k=k.value,a.call(d,k[1],k[0],this)};l.prototype[Symbol.iterator]=l.prototype.entries;var f=0;return l});
+x("Set",function(b){function c(g){this.g=new Map;if(g){g=t(g);for(var h;!(h=g.next()).done;)this.add(h.value)}this.size=this.g.size}if(function(){if(!b||typeof b!="function"||!b.prototype.entries||typeof Object.seal!="function")return!1;try{var g=Object.seal({x:4}),h=new b(t([g]));if(!h.has(g)||h.size!=1||h.add(g)!=h||h.size!=1||h.add({x:4})!=h||h.size!=2)return!1;var l=h.entries(),m=l.next();if(m.done||m.value[0]!=g||m.value[1]!=g)return!1;m=l.next();return m.done||m.value[0]==g||m.value[0].x!=4||
+m.value[1]!=m.value[0]?!1:l.next().done}catch(f){return!1}}())return b;c.prototype.add=function(g){g=g===0?0:g;this.g.set(g,g);this.size=this.g.size;return this};c.prototype.delete=function(g){g=this.g.delete(g);this.size=this.g.size;return g};c.prototype.clear=function(){this.g.clear();this.size=0};c.prototype.has=function(g){return this.g.has(g)};c.prototype.entries=function(){return this.g.entries()};c.prototype.values=function(){return this.g.values()};c.prototype.keys=c.prototype.values;c.prototype[Symbol.iterator]=
+c.prototype.values;c.prototype.forEach=function(g,h){var l=this;this.g.forEach(function(m){return g.call(h,m,m,l)})};return c});(function(){function b(){return m?Promise.resolve(m):f?f:f=fetch("https://www.gstatic.com/bard-maui/resources/material-design-icon-names.804824289.json").then(function(a){if(!a.ok)throw Error("HTTP error! status: "+a.status+" fetching https://www.gstatic.com/bard-maui/resources/material-design-icon-names.804824289.json");return a.json()}).then(function(a){if(!Array.isArray(a))throw new TypeError("Fetched icon names from https://www.gstatic.com/bard-maui/resources/material-design-icon-names.804824289.json is not an array.");
+return m=a}).catch(function(a){console.error("IconChecker: Failed to load valid icon names from https://www.gstatic.com/bard-maui/resources/material-design-icon-names.804824289.json.",a);f=null;throw a;})}function c(a){var d,e,k,p;return I(new H(new B(function(n){switch(n.h){case 1:d=(a.textContent||"").trim();if(!d||a.classList.contains("js-replaced-missing-icon")&&d==="radio_button_unchecked")return n.return();e=window.getComputedStyle(a);if(e.display==="none"||e.visibility==="hidden")return n.return();
+n.l=2;var r=b();n.h=4;return{value:r};case 4:k=n.u;n.h=3;n.l=0;break;case 2:return n.l=0,n.i=null,console.warn('IconChecker: Skipping check for icon "'+d+'" as valid names could not be loaded.'),n.return();case 3:(p=k.includes(d))?a.classList.contains("js-replaced-missing-icon")&&a.classList.remove("js-replaced-missing-icon"):d==="radio_button_unchecked"&&a.classList.contains("js-replaced-missing-icon")||(a.textContent="radio_button_unchecked",a.classList.add("js-replaced-missing-icon")),n.h=0}})))}
+function g(a){a=a===void 0?document.body:a;a.querySelectorAll(l).forEach(function(d){c(d)})}function h(){b().catch(function(){});document.fonts.ready.then(function(){requestAnimationFrame(function(){g(document.body);(new MutationObserver(function(a){var d=new Set;a=t(a);for(var e=a.next();!e.done;e=a.next())if(e=e.value,e.type==="childList")e.addedNodes.forEach(function(p){p.nodeType===Node.ELEMENT_NODE&&(p.matches(l)&&d.add(p),p.querySelectorAll(l).forEach(function(n){d.add(n)}))});else if(e.type===
+"attributes"&&e.attributeName==="class"){var k=e.target;e.target.nodeType===Node.ELEMENT_NODE&&k.matches(l)&&d.add(k)}else e.type==="characterData"&&e.target.parentNode&&(e=e.target.parentNode,e.nodeType===Node.ELEMENT_NODE&&e.matches(l)&&d.add(e));d.size>0&&setTimeout(function(){d.forEach(function(p){c(p)})},500)})).observe(document.body,{childList:!0,subtree:!0,attributes:!0,attributeFilter:["class"],characterData:!0})})}).catch(function(a){console.error("IconChecker: Font loading error. Scanning icons anyway.",
+a);requestAnimationFrame(function(){g(document.body)})})}var l=["material-icons","material-symbols-outlined","material-symbols-rounded","material-symbols-sharp"].map(function(a){return"."+a}).join(","),m=null,f=null;document.readyState==="loading"?document.addEventListener("DOMContentLoaded",function(){h()}):h()})();}).call(this);
+
+</script>
+
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Secure Air-Gapped Deployment Architect</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .pipeline-line {
+            background-image: linear-gradient(to right, #94a3b8 50%, transparent 50%);
+            background-size: 20px 100%;
+        }
+        .animate-flow {
+            animation: flow 1s linear infinite;
+        }
+        @keyframes flow {
+            from { background-position: 0 0; }
+            to { background-position: -20px 0; }
+        }
+        .node-active {
+            border-color: #3b82f6; /* blue-500 */
+            background-color: #eff6ff; /* blue-50 */
+            color: #1e40af; /* blue-800 */
+        }
+        /* Custom scrollbar */
+        .custom-scroll::-webkit-scrollbar { width: 8px; }
+        .custom-scroll::-webkit-scrollbar-track { background: #f1f5f9; }
+        .custom-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        .custom-scroll::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        
+        /* Dropdown animation */
+        .dropdown-enter {
+            opacity: 0;
+            transform: scale(0.95) translateY(-10px);
+            pointer-events: none;
+        }
+        .dropdown-active {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+            pointer-events: auto;
+        }
+    </style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.pointer-events-none{pointer-events:none}.absolute{position:absolute}.relative{position:relative}.inset-0{inset:0px}.-left-3{left:-0.75rem}.-right-3{right:-0.75rem}.-top-3{top:-0.75rem}.left-1\/2{left:50%}.left-8{left:2rem}.right-0{right:0px}.right-8{right:2rem}.top-0{top:0px}.top-1\/2{top:50%}.top-4{top:1rem}.top-full{top:100%}.-z-10{z-index:-10}.z-0{z-index:0}.z-10{z-index:10}.z-20{z-index:20}.z-50{z-index:50}.col-span-4{grid-column:span 4 / span 4}.col-span-8{grid-column:span 8 / span 8}.mx-auto{margin-left:auto;margin-right:auto}.mb-1{margin-bottom:0.25rem}.mb-12{margin-bottom:3rem}.mb-2{margin-bottom:0.5rem}.mb-3{margin-bottom:0.75rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.ml-4{margin-left:1rem}.mt-0\.5{margin-top:0.125rem}.mt-1{margin-top:0.25rem}.mt-2{margin-top:0.5rem}.mt-4{margin-top:1rem}.block{display:block}.flex{display:flex}.grid{display:grid}.hidden{display:none}.h-1{height:0.25rem}.h-10{height:2.5rem}.h-16{height:4rem}.h-2\/5{height:40%}.h-3{height:0.75rem}.h-40{height:10rem}.h-8{height:2rem}.h-full{height:100%}.h-screen{height:100vh}.w-1\/3{width:33.333333%}.w-1\/6{width:16.666667%}.w-10{width:2.5rem}.w-3{width:0.75rem}.w-40{width:10rem}.w-64{width:16rem}.w-72{width:18rem}.w-8{width:2rem}.w-full{width:100%}.max-w-4xl{max-width:56rem}.max-w-5xl{max-width:64rem}.max-w-6xl{max-width:72rem}.max-w-7xl{max-width:80rem}.max-w-\[80\%\]{max-width:80%}.flex-1{flex:1 1 0%}.shrink-0{flex-shrink:0}.origin-top-right{transform-origin:top right}.-translate-x-1\/2{--tw-translate-x:-50%;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.-translate-y-1\/2{--tw-translate-y:-50%;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.rotate-45{--tw-rotate:45deg;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.scale-110{--tw-scale-x:1.1;--tw-scale-y:1.1;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.cursor-pointer{cursor:pointer}.list-inside{list-style-position:inside}.list-disc{list-style-type:disc}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.grid-cols-12{grid-template-columns:repeat(12, minmax(0, 1fr))}.grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.flex-col{flex-direction:column}.items-start{align-items:flex-start}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-0{gap:0px}.gap-2{gap:0.5rem}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.gap-8{gap:2rem}.space-y-2 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.5rem * var(--tw-space-y-reverse))}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.space-y-8 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(2rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(2rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.overflow-x-auto{overflow-x:auto}.overflow-y-auto{overflow-y:auto}.overflow-y-hidden{overflow-y:hidden}.rounded{border-radius:0.25rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-md{border-radius:0.375rem}.rounded-xl{border-radius:0.75rem}.rounded-r-md{border-top-right-radius:0.375rem;border-bottom-right-radius:0.375rem}.rounded-bl-lg{border-bottom-left-radius:0.5rem}.border{border-width:1px}.border-2{border-width:2px}.border-4{border-width:4px}.border-b{border-bottom-width:1px}.border-b-2{border-bottom-width:2px}.border-l{border-left-width:1px}.border-l-2{border-left-width:2px}.border-l-4{border-left-width:4px}.border-r-2{border-right-width:2px}.border-t{border-top-width:1px}.border-t-2{border-top-width:2px}.border-dashed{border-style:dashed}.border-amber-300{--tw-border-opacity:1;border-color:rgb(252 211 77 / var(--tw-border-opacity, 1))}.border-blue-100\/50{border-color:rgb(219 234 254 / 0.5)}.border-blue-500{--tw-border-opacity:1;border-color:rgb(59 130 246 / var(--tw-border-opacity, 1))}.border-slate-100{--tw-border-opacity:1;border-color:rgb(241 245 249 / var(--tw-border-opacity, 1))}.border-slate-200{--tw-border-opacity:1;border-color:rgb(226 232 240 / var(--tw-border-opacity, 1))}.border-slate-300{--tw-border-opacity:1;border-color:rgb(203 213 225 / var(--tw-border-opacity, 1))}.border-slate-300\/50{border-color:rgb(203 213 225 / 0.5)}.border-slate-400{--tw-border-opacity:1;border-color:rgb(148 163 184 / var(--tw-border-opacity, 1))}.border-slate-700{--tw-border-opacity:1;border-color:rgb(51 65 85 / var(--tw-border-opacity, 1))}.bg-amber-50{--tw-bg-opacity:1;background-color:rgb(255 251 235 / var(--tw-bg-opacity, 1))}.bg-blue-100{--tw-bg-opacity:1;background-color:rgb(219 234 254 / var(--tw-bg-opacity, 1))}.bg-blue-50{--tw-bg-opacity:1;background-color:rgb(239 246 255 / var(--tw-bg-opacity, 1))}.bg-blue-50\/50{background-color:rgb(239 246 255 / 0.5)}.bg-blue-500{--tw-bg-opacity:1;background-color:rgb(59 130 246 / var(--tw-bg-opacity, 1))}.bg-blue-600{--tw-bg-opacity:1;background-color:rgb(37 99 235 / var(--tw-bg-opacity, 1))}.bg-blue-900{--tw-bg-opacity:1;background-color:rgb(30 58 138 / var(--tw-bg-opacity, 1))}.bg-emerald-100{--tw-bg-opacity:1;background-color:rgb(209 250 229 / var(--tw-bg-opacity, 1))}.bg-green-500{--tw-bg-opacity:1;background-color:rgb(34 197 94 / var(--tw-bg-opacity, 1))}.bg-indigo-100{--tw-bg-opacity:1;background-color:rgb(224 231 255 / var(--tw-bg-opacity, 1))}.bg-orange-600{--tw-bg-opacity:1;background-color:rgb(234 88 12 / var(--tw-bg-opacity, 1))}.bg-purple-100{--tw-bg-opacity:1;background-color:rgb(243 232 255 / var(--tw-bg-opacity, 1))}.bg-purple-50{--tw-bg-opacity:1;background-color:rgb(250 245 255 / var(--tw-bg-opacity, 1))}.bg-slate-100{--tw-bg-opacity:1;background-color:rgb(241 245 249 / var(--tw-bg-opacity, 1))}.bg-slate-200{--tw-bg-opacity:1;background-color:rgb(226 232 240 / var(--tw-bg-opacity, 1))}.bg-slate-200\/50{background-color:rgb(226 232 240 / 0.5)}.bg-slate-50{--tw-bg-opacity:1;background-color:rgb(248 250 252 / var(--tw-bg-opacity, 1))}.bg-slate-900{--tw-bg-opacity:1;background-color:rgb(15 23 42 / var(--tw-bg-opacity, 1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.p-10{padding:2.5rem}.p-2{padding:0.5rem}.p-3{padding:0.75rem}.p-4{padding:1rem}.p-6{padding:1.5rem}.p-8{padding:2rem}.px-1{padding-left:0.25rem;padding-right:0.25rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-4{padding-left:1rem;padding-right:1rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-1\.5{padding-top:0.375rem;padding-bottom:0.375rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.pb-4{padding-bottom:1rem}.pl-10{padding-left:2.5rem}.pl-4{padding-left:1rem}.pl-6{padding-left:1.5rem}.pl-8{padding-left:2rem}.text-left{text-align:left}.text-center{text-align:center}.font-mono{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-\[10px\]{font-size:10px}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.font-medium{font-weight:500}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.leading-relaxed{line-height:1.625}.leading-tight{line-height:1.25}.tracking-tight{letter-spacing:-0.025em}.tracking-wider{letter-spacing:0.05em}.tracking-widest{letter-spacing:0.1em}.text-amber-500{--tw-text-opacity:1;color:rgb(245 158 11 / var(--tw-text-opacity, 1))}.text-amber-600{--tw-text-opacity:1;color:rgb(217 119 6 / var(--tw-text-opacity, 1))}.text-amber-700{--tw-text-opacity:1;color:rgb(180 83 9 / var(--tw-text-opacity, 1))}.text-amber-900{--tw-text-opacity:1;color:rgb(120 53 15 / var(--tw-text-opacity, 1))}.text-blue-400{--tw-text-opacity:1;color:rgb(96 165 250 / var(--tw-text-opacity, 1))}.text-blue-500{--tw-text-opacity:1;color:rgb(59 130 246 / var(--tw-text-opacity, 1))}.text-blue-600{--tw-text-opacity:1;color:rgb(37 99 235 / var(--tw-text-opacity, 1))}.text-blue-800{--tw-text-opacity:1;color:rgb(30 64 175 / var(--tw-text-opacity, 1))}.text-blue-900{--tw-text-opacity:1;color:rgb(30 58 138 / var(--tw-text-opacity, 1))}.text-emerald-600{--tw-text-opacity:1;color:rgb(5 150 105 / var(--tw-text-opacity, 1))}.text-green-400{--tw-text-opacity:1;color:rgb(74 222 128 / var(--tw-text-opacity, 1))}.text-green-500{--tw-text-opacity:1;color:rgb(34 197 94 / var(--tw-text-opacity, 1))}.text-green-600{--tw-text-opacity:1;color:rgb(22 163 74 / var(--tw-text-opacity, 1))}.text-indigo-600{--tw-text-opacity:1;color:rgb(79 70 229 / var(--tw-text-opacity, 1))}.text-purple-400{--tw-text-opacity:1;color:rgb(192 132 252 / var(--tw-text-opacity, 1))}.text-purple-500{--tw-text-opacity:1;color:rgb(168 85 247 / var(--tw-text-opacity, 1))}.text-purple-600{--tw-text-opacity:1;color:rgb(147 51 234 / var(--tw-text-opacity, 1))}.text-purple-800{--tw-text-opacity:1;color:rgb(107 33 168 / var(--tw-text-opacity, 1))}.text-purple-900{--tw-text-opacity:1;color:rgb(88 28 135 / var(--tw-text-opacity, 1))}.text-slate-200{--tw-text-opacity:1;color:rgb(226 232 240 / var(--tw-text-opacity, 1))}.text-slate-300{--tw-text-opacity:1;color:rgb(203 213 225 / var(--tw-text-opacity, 1))}.text-slate-400{--tw-text-opacity:1;color:rgb(148 163 184 / var(--tw-text-opacity, 1))}.text-slate-500{--tw-text-opacity:1;color:rgb(100 116 139 / var(--tw-text-opacity, 1))}.text-slate-600{--tw-text-opacity:1;color:rgb(71 85 105 / var(--tw-text-opacity, 1))}.text-slate-700{--tw-text-opacity:1;color:rgb(51 65 85 / var(--tw-text-opacity, 1))}.text-slate-800{--tw-text-opacity:1;color:rgb(30 41 59 / var(--tw-text-opacity, 1))}.text-slate-900{--tw-text-opacity:1;color:rgb(15 23 42 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.opacity-0{opacity:0}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgb(0 0 0 / 0.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-\[0_-4px_6px_-1px_rgba\(0\2c 0\2c 0\2c 0\.1\)\]{--tw-shadow:0 -4px 6px -1px rgba(0,0,0,0.1);--tw-shadow-colored:0 -4px 6px -1px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.transition{transition-property:color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-opacity{transition-property:opacity;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-transform{transition-property:transform;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.delay-75{transition-delay:75ms}.duration-200{transition-duration:200ms}.duration-300{transition-duration:300ms}.hover\:border-blue-400:hover{--tw-border-opacity:1;border-color:rgb(96 165 250 / var(--tw-border-opacity, 1))}.hover\:bg-amber-100:hover{--tw-bg-opacity:1;background-color:rgb(254 243 199 / var(--tw-bg-opacity, 1))}.hover\:bg-slate-50:hover{--tw-bg-opacity:1;background-color:rgb(248 250 252 / var(--tw-bg-opacity, 1))}.hover\:bg-slate-800:hover{--tw-bg-opacity:1;background-color:rgb(30 41 59 / var(--tw-bg-opacity, 1))}.hover\:shadow-lg:hover{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.hover\:shadow-md:hover{--tw-shadow:0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}.focus\:ring-2:focus{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)}.focus\:ring-blue-500:focus{--tw-ring-opacity:1;--tw-ring-color:rgb(59 130 246 / var(--tw-ring-opacity, 1))}.group:hover .group-hover\:translate-x-1{--tw-translate-x:0.25rem;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}@media (min-width: 768px){.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.md\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}}</style></head>
+<body class="bg-slate-50 text-slate-900 h-screen flex flex-col overflow-hidden">
+<!-- Header -->
+<header class="bg-slate-900 text-white p-4 shadow-lg shrink-0 z-50 relative">
+<div class="max-w-7xl mx-auto flex justify-between items-center">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-4xl text-blue-400">shield_lock</span>
+<div>
+<h1 class="text-xl font-bold tracking-tight">Air-Gapped Architect</h1>
+<p class="text-xs text-slate-400">Secure Delivery Platform for Helm, OCI &amp; Provenance</p>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<!-- Navigation -->
+<div class="flex gap-2 text-sm font-medium">
+<button class="px-3 py-1.5 rounded-full bg-blue-600 text-white transition" id="btn-pipeline" onclick="switchView('pipeline')">Pipeline View</button>
+<button class="px-3 py-1.5 rounded-full hover:bg-slate-800 text-slate-300 transition" id="btn-tools" onclick="switchView('tools')">Tool Stack</button>
+<button class="px-3 py-1.5 rounded-full hover:bg-slate-800 text-slate-300 transition" id="btn-guide" onclick="switchView('guide')">Implementation Guide</button>
+</div>
+<!-- User Menu -->
+<div class="relative">
+<button class="flex items-center gap-2 hover:bg-slate-800 p-2 rounded-lg transition" id="user-menu-btn" onclick="toggleUserMenu()">
+<div class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-sm font-bold border-2 border-slate-700">U</div>
+<span class="material-symbols-outlined text-slate-400 text-sm">expand_more</span>
+</button>
+<!-- Dropdown -->
+<div class="absolute right-0 top-full mt-2 w-72 bg-white rounded-xl shadow-2xl border border-slate-200 transition-all duration-200 origin-top-right text-slate-800 p-4 dropdown-active" id="user-dropdown">
+<div class="flex items-center gap-3 mb-4 pb-4 border-b border-slate-100">
+<div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-500">
+<span class="material-symbols-outlined">person</span>
+</div>
+<div>
+<div class="font-bold text-sm">User Settings</div>
+<div class="text-xs text-slate-500">Manage integrations</div>
+</div>
+</div>
+<div class="space-y-4">
+<div>
+<label class="block text-xs font-bold text-slate-500 uppercase mb-1">GitHub PAT Token</label>
+<input class="w-full px-3 py-2 text-sm border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" id="github-pat" placeholder="ghp_xxxxxxxxxxxx" type="password">
+<p class="text-[10px] text-slate-400 mt-1">Token requires <code>repo</code> scope.</p>
+</div>
+<div class="bg-slate-50 p-3 rounded text-xs text-slate-600 border border-slate-100">
+<p class="mb-1"><strong>Target Repo:</strong></p>
+<code class="text-blue-600">caretak3r/pocs</code>
+</div>
+<button class="w-full bg-slate-900 hover:bg-slate-800 text-white text-sm font-medium py-2 rounded-lg flex items-center justify-center gap-2 transition opacity-50 cursor-not-allowed" id="sync-btn" onclick="syncToGitHub()" disabled="">
+<span class="material-symbols-outlined text-base">sync</span>
+                                Sync &amp; Export Code
+                            </button>
+<div class="text-xs text-center" id="sync-status"><span class="text-blue-500 animate-pulse">Syncing code...</span></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-hidden flex flex-col relative z-0">
+<!-- View 1: Interactive Pipeline Visualizer -->
+<div class="absolute inset-0 flex flex-col h-full w-full transition-opacity duration-300" id="view-pipeline">
+<!-- Top Visualization Area -->
+<div class="flex-1 bg-slate-100 p-8 overflow-x-auto overflow-y-hidden flex items-center justify-center relative">
+<!-- Background Zones Labels -->
+<div class="absolute top-4 left-8 text-slate-400 font-bold uppercase tracking-widest text-xs">Low Side (Connected)</div>
+<div class="absolute top-4 left-1/2 -translate-x-1/2 text-slate-400 font-bold uppercase tracking-widest text-xs">The Air Gap</div>
+<div class="absolute top-4 right-8 text-slate-400 font-bold uppercase tracking-widest text-xs">High Side (Disconnected)</div>
+<!-- Pipeline Container -->
+<div class="flex items-center gap-0 w-full max-w-6xl mx-auto relative z-10">
+<!-- ZONE 1: Connected Source -->
+<div class="flex flex-col gap-6 items-center group relative w-1/3">
+<div class="absolute inset-0 bg-blue-50/50 -z-10 rounded-xl border border-blue-100/50 scale-110"></div>
+<!-- Step 1 -->
+<button class="step-node w-64 p-4 bg-white border-2 border-slate-200 rounded-lg shadow-sm hover:shadow-md hover:border-blue-400 transition text-left relative group-hover:translate-x-1 duration-300" onclick="selectStep(1)">
+<div class="flex items-center gap-3 mb-2">
+<div class="bg-indigo-100 p-2 rounded-md text-indigo-600">
+<span class="material-symbols-outlined text-xl">inventory_2</span>
+</div>
+<h3 class="font-bold text-slate-800">1. Acquire &amp; Hardening</h3>
+</div>
+<p class="text-xs text-slate-500">Fetch Helm Charts &amp; OCI Images. Generate SBOMs (Syft). Scan vulnerabilities.</p>
+<div class="absolute -right-3 top-1/2 -translate-y-1/2 w-3 h-3 bg-white border-t-2 border-r-2 border-slate-300 rotate-45"></div>
+</button>
+<!-- Step 2 -->
+<button class="step-node w-64 p-4 bg-white border-2 border-slate-200 rounded-lg shadow-sm hover:shadow-md hover:border-blue-400 transition text-left relative group-hover:translate-x-1 duration-300 delay-75" onclick="selectStep(2)">
+<div class="flex items-center gap-3 mb-2">
+<div class="bg-emerald-100 p-2 rounded-md text-emerald-600">
+<span class="material-symbols-outlined text-xl">verified</span>
+</div>
+<h3 class="font-bold text-slate-800">2. Sign &amp; Provenance</h3>
+</div>
+<p class="text-xs text-slate-500">Sign images (Cosign). Attach SLSA provenance and SBOMs as attestations.</p>
+<div class="absolute -right-3 top-1/2 -translate-y-1/2 w-3 h-3 bg-white border-t-2 border-r-2 border-slate-300 rotate-45"></div>
+</button>
+</div>
+<!-- CONNECTOR -->
+<div class="h-1 flex-1 pipeline-line animate-flow relative">
+<span class="material-symbols-outlined absolute left-1/2 -top-3 text-slate-400 bg-slate-100 px-1">lock</span>
+</div>
+<!-- ZONE 2: The Gap -->
+<div class="flex flex-col items-center justify-center w-1/6 relative px-4">
+<button class="step-node w-40 h-40 rounded-full border-4 border-dashed border-amber-300 bg-amber-50 flex flex-col items-center justify-center text-center hover:bg-amber-100 transition cursor-pointer z-20 shadow-lg" onclick="selectStep(3)">
+<span class="material-symbols-outlined text-4xl text-amber-600 mb-2">topic</span>
+<span class="font-bold text-amber-900 text-sm">3. The Bundle</span>
+<span class="text-[10px] text-amber-700 mt-1 max-w-[80%] leading-tight">Single Encrypted Artifact (Zarf/Tar)</span>
+</button>
+<div class="text-xs text-slate-400 mt-4 text-center">Sneakernet / Diode</div>
+</div>
+<!-- CONNECTOR -->
+<div class="h-1 flex-1 pipeline-line animate-flow relative">
+<span class="material-symbols-outlined absolute left-1/2 -top-3 text-slate-400 bg-slate-100 px-1">arrow_forward</span>
+</div>
+<!-- ZONE 3: High Side -->
+<div class="flex flex-col gap-6 items-center w-1/3 relative">
+<div class="absolute inset-0 bg-slate-200/50 -z-10 rounded-xl border border-slate-300/50 scale-110"></div>
+<!-- Step 4 -->
+<button class="step-node w-64 p-4 bg-white border-2 border-slate-200 rounded-lg shadow-sm hover:shadow-md hover:border-blue-400 transition text-left relative" onclick="selectStep(4)">
+<div class="absolute -left-3 top-1/2 -translate-y-1/2 w-3 h-3 bg-white border-b-2 border-l-2 border-slate-300 rotate-45"></div>
+<div class="flex items-center gap-3 mb-2">
+<div class="bg-purple-100 p-2 rounded-md text-purple-600">
+<span class="material-symbols-outlined text-xl">cloud_upload</span>
+</div>
+<h3 class="font-bold text-slate-800">4. Ingest &amp; Verify</h3>
+</div>
+<p class="text-xs text-slate-500">Unpack bundle to Air-Gap Registry (Harbor). Verify signatures &amp; provenance.</p>
+</button>
+<!-- Step 5 -->
+<button class="step-node w-64 p-4 bg-white border-2 border-slate-200 rounded-lg shadow-sm hover:shadow-md hover:border-blue-400 transition text-left relative" onclick="selectStep(5)">
+<div class="absolute -left-3 top-1/2 -translate-y-1/2 w-3 h-3 bg-white border-b-2 border-l-2 border-slate-300 rotate-45"></div>
+<div class="flex items-center gap-3 mb-2">
+<div class="bg-blue-100 p-2 rounded-md text-blue-600">
+<span class="material-symbols-outlined text-xl">rocket_launch</span>
+</div>
+<h3 class="font-bold text-slate-800">5. Deploy</h3>
+</div>
+<p class="text-xs text-slate-500">Helm Install / GitOps Sync. Policy enforcement (Kyverno) ensures compliance.</p>
+</button>
+</div>
+</div>
+</div>
+<!-- Bottom Detail Panel -->
+<div class="h-2/5 bg-white border-t border-slate-200 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] overflow-y-auto custom-scroll p-8 transition-transform duration-300" id="detail-panel">
+<div class="max-w-5xl mx-auto grid grid-cols-12 gap-8">
+<!-- Dynamic Content Injected Here -->
+<div class="col-span-8" id="detail-content">
+<!-- Default State -->
+<h2 class="text-2xl font-bold text-slate-800 mb-4">Welcome to the Air-Gap Architect</h2>
+<p class="text-slate-600 leading-relaxed mb-6">
+                            This interactive tool visualizes the secure software supply chain for disconnected environments. 
+                            The architecture described adheres to modern DevSecOps standards, including <strong>SLSA</strong> (Supply-chain Levels for Software Artifacts) 
+                            and the <strong>CNCF</strong> landscape.
+                        </p>
+<div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-md">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-blue-600 mt-1">info</span>
+<div>
+<h4 class="font-bold text-blue-900">Start Exploring</h4>
+<p class="text-blue-800 text-sm">Click on any node in the diagram above to see the specific tools, commands, and security concepts required for that stage.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Sidebar Stats/Tools -->
+<div class="col-span-4 border-l border-slate-100 pl-8">
+<h3 class="font-bold text-slate-500 text-xs uppercase tracking-wider mb-4">Recommended Stack</h3>
+<div class="space-y-3" id="stack-list">
+<div class="flex items-center gap-3 p-2 rounded hover:bg-slate-50 transition">
+<div class="w-8 h-8 bg-slate-200 rounded flex items-center justify-center text-xs font-bold">Z</div>
+<div>
+<div class="font-semibold text-sm">Zarf</div>
+<div class="text-xs text-slate-500">Packaging &amp; Deployment</div>
+</div>
+</div>
+<div class="flex items-center gap-3 p-2 rounded hover:bg-slate-50 transition">
+<div class="w-8 h-8 bg-slate-200 rounded flex items-center justify-center text-xs font-bold">H</div>
+<div>
+<div class="font-semibold text-sm">Harbor</div>
+<div class="text-xs text-slate-500">Registry &amp; Scanning</div>
+</div>
+</div>
+<div class="flex items-center gap-3 p-2 rounded hover:bg-slate-50 transition">
+<div class="w-8 h-8 bg-slate-200 rounded flex items-center justify-center text-xs font-bold">C</div>
+<div>
+<div class="font-semibold text-sm">Cosign</div>
+<div class="text-xs text-slate-500">Signing &amp; Verification</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- View 2: Tool Stack Comparison -->
+<div class="absolute inset-0 bg-slate-50 opacity-0 pointer-events-none transition-opacity duration-300 overflow-y-auto custom-scroll p-8" id="view-tools">
+<div class="max-w-6xl mx-auto">
+<h2 class="text-3xl font-bold text-slate-900 mb-2">Component Selection</h2>
+<p class="text-slate-600 mb-8">Choose the best-in-class tools for each layer of the air-gapped stack.</p>
+<!-- Tool Category: The Platform / Bundler -->
+<div class="mb-12">
+<h3 class="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined">inventory</span> Deployment &amp; Bundling Platform
+                    </h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Zarf -->
+<div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 relative overflow-hidden group hover:shadow-lg transition">
+<div class="absolute top-0 right-0 bg-green-500 text-white text-[10px] font-bold px-2 py-1 rounded-bl-lg">RECOMMENDED</div>
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-lg bg-slate-900 text-white flex items-center justify-center font-bold text-xl">Z</div>
+<h4 class="font-bold text-lg">Zarf</h4>
+</div>
+<p class="text-sm text-slate-600 mb-4 h-16">Open-source tool by Defense Unicorns. Bundles images, Helm charts, and manifests into a single tarball. Built specifically for air-gap.</p>
+<ul class="space-y-2 text-sm text-slate-700 mb-6">
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-green-500 text-sm mt-0.5">check_circle</span> Built-in SBOM generation (Syft)</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-green-500 text-sm mt-0.5">check_circle</span> Auto-injects registry in air-gap</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-green-500 text-sm mt-0.5">check_circle</span> Handles Helm chart dependencies</li>
+</ul>
+<a class="block text-center w-full py-2 border border-slate-300 rounded-lg hover:bg-slate-50 text-sm font-medium" href="https://zarf.dev/" target="_blank">View Project</a>
+</div>
+<!-- Hauler -->
+<div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 group hover:shadow-lg transition">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-lg bg-orange-600 text-white flex items-center justify-center font-bold text-xl">H</div>
+<h4 class="font-bold text-lg">Hauler</h4>
+</div>
+<p class="text-sm text-slate-600 mb-4 h-16">Simplifies storing, packaging, and distributing artifacts. Acts as a portable content store for air-gapped environments.</p>
+<ul class="space-y-2 text-sm text-slate-700 mb-6">
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-green-500 text-sm mt-0.5">check_circle</span> Store-based architecture</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-green-500 text-sm mt-0.5">check_circle</span> Supports OCI artifacts</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-slate-400 text-sm mt-0.5">remove</span> Less opinionated than Zarf</li>
+</ul>
+<a class="block text-center w-full py-2 border border-slate-300 rounded-lg hover:bg-slate-50 text-sm font-medium" href="https://hauler.dev/" target="_blank">View Project</a>
+</div>
+<!-- Big Bang -->
+<div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 group hover:shadow-lg transition">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-lg bg-blue-900 text-white flex items-center justify-center font-bold text-xl">BB</div>
+<h4 class="font-bold text-lg">Platform One Big Bang</h4>
+</div>
+<p class="text-sm text-slate-600 mb-4 h-16">DoD reference architecture. A collection of Helm charts (Flux, Istio, etc.) configured for strict security/air-gap.</p>
+<ul class="space-y-2 text-sm text-slate-700 mb-6">
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-green-500 text-sm mt-0.5">check_circle</span> Iron Bank Hardened Images</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-green-500 text-sm mt-0.5">check_circle</span> Uses Flux for GitOps</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-amber-500 text-sm mt-0.5">warning</span> Heavy resource requirements</li>
+</ul>
+<a class="block text-center w-full py-2 border border-slate-300 rounded-lg hover:bg-slate-50 text-sm font-medium" href="https://p1.dso.mil/big-bang" target="_blank">View Project</a>
+</div>
+</div>
+</div>
+<!-- Tool Category: Registry & Security -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+<div>
+<h3 class="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined">dns</span> Air-Gapped Registry
+                        </h3>
+<div class="bg-white p-6 rounded-xl border border-slate-200">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-bold text-lg text-slate-800">Harbor</h4>
+<p class="text-sm text-slate-500 mb-3">CNCF Graduated Project</p>
+</div>
+<span class="material-symbols-outlined text-blue-500 text-3xl">anchor</span>
+</div>
+<p class="text-sm text-slate-600 mb-4">The industry standard for air-gapped registries. Supports replication, Role-Based Access Control (RBAC), and vulnerability scanning.</p>
+<div class="bg-slate-50 p-3 rounded text-sm space-y-2">
+<div class="flex items-center gap-2"><span class="material-symbols-outlined text-green-600 text-sm">verified</span> <strong>Signing:</strong> Native support for Cosign &amp; Notary</div>
+<div class="flex items-center gap-2"><span class="material-symbols-outlined text-green-600 text-sm">security</span> <strong>Scanning:</strong> Trivy/Clair integration for SBOMs</div>
+</div>
+</div>
+</div>
+<div>
+<h3 class="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined">fingerprint</span> Signing &amp; SBOM
+                        </h3>
+<div class="bg-white p-6 rounded-xl border border-slate-200">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-bold text-lg text-slate-800">Cosign + Syft</h4>
+<p class="text-sm text-slate-500 mb-3">Sigstore &amp; Anchore</p>
+</div>
+<span class="material-symbols-outlined text-purple-500 text-3xl">history_edu</span>
+</div>
+<p class="text-sm text-slate-600 mb-4">The standard duo for supply chain security.</p>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-purple-50 p-3 rounded">
+<div class="font-bold text-purple-900 text-sm mb-1">Cosign</div>
+<p class="text-xs text-purple-800">Signs container images, blobs, and attaches signatures to the OCI registry.</p>
+</div>
+<div class="bg-blue-50 p-3 rounded">
+<div class="font-bold text-blue-900 text-sm mb-1">Syft</div>
+<p class="text-xs text-blue-800">Generates SBOMs (SPDX/CycloneDX) from container images and filesystems.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- View 3: Guide -->
+<div class="absolute inset-0 bg-slate-50 opacity-0 pointer-events-none transition-opacity duration-300 overflow-y-auto custom-scroll p-8" id="view-guide">
+<div class="max-w-4xl mx-auto bg-white p-10 shadow-sm border border-slate-200 rounded-xl">
+<h2 class="text-3xl font-bold text-slate-900 mb-6">Technical Implementation Strategy</h2>
+<div class="space-y-8">
+<!-- Section 1 -->
+<section>
+<h3 class="text-xl font-bold text-blue-800 mb-3 flex items-center gap-2">
+<span class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-sm">1</span>
+                            The "Bundle" Concept
+                        </h3>
+<p class="text-slate-700 leading-relaxed mb-4">
+                            In a connected world, `helm install` reaches out to the internet for charts and Docker Hub for images. In an air-gap, this fails. 
+                            The solution is to "vendor" everything. 
+                        </p>
+<div class="bg-slate-900 text-slate-200 p-4 rounded-lg font-mono text-sm overflow-x-auto">
+<p class="text-slate-400 mb-2"># Example Zarf Definition (zarf.yaml)</p>
+<p class="text-purple-400">kind<span class="text-white">:</span> <span class="text-green-400">ZarfPackageConfig</span></p>
+<p class="text-purple-400">metadata<span class="text-white">:</span></p>
+<p class="pl-4"><span class="text-purple-400">name<span class="text-white">:</span></span> <span class="text-green-400">secure-app</span></p>
+<p class="text-purple-400">components<span class="text-white">:</span></p>
+<p class="pl-4"><span class="text-white">-</span> <span class="text-purple-400">name<span class="text-white">:</span></span> <span class="text-green-400">app-charts</span></p>
+<p class="pl-6"><span class="text-purple-400">charts<span class="text-white">:</span></span></p>
+<p class="pl-8"><span class="text-white">-</span> <span class="text-purple-400">url<span class="text-white">:</span></span> <span class="text-green-400">https://charts.bitnami.com/bitnami</span></p>
+<p class="pl-10"><span class="text-purple-400">name<span class="text-white">:</span></span> <span class="text-green-400">redis</span></p>
+<p class="pl-10"><span class="text-purple-400">version<span class="text-white">:</span></span> <span class="text-green-400">16.0.0</span></p>
+<p class="pl-6"><span class="text-purple-400">images<span class="text-white">:</span></span></p>
+<p class="pl-8"><span class="text-white">-</span> <span class="text-green-400">docker.io/bitnami/redis:6.2</span></p>
+</div>
+<p class="text-sm text-slate-500 mt-2">Zarf will pull the chart, find the images in the chart, pull those images, generate SBOMs, and zip them all into one file.</p>
+</section>
+<!-- Section 2 -->
+<section>
+<h3 class="text-xl font-bold text-blue-800 mb-3 flex items-center gap-2">
+<span class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-sm">2</span>
+                            Handling Metadata &amp; Provenance
+                        </h3>
+<p class="text-slate-700 leading-relaxed mb-4">
+                            You need to ensure the file you transport across the air gap hasn't been tampered with. We use <strong>Cosign</strong> for this.
+                        </p>
+<ul class="list-disc list-inside space-y-2 text-slate-700 ml-4">
+<li><strong>Step 1:</strong> Sign the images on the low side.</li>
+<li><strong>Step 2:</strong> Attach the SBOM as an attestation.</li>
+<li><strong>Step 3:</strong> Verify the signature inside the air gap before loading into the registry.</li>
+</ul>
+<div class="bg-slate-100 p-4 rounded-lg mt-4 border-l-4 border-slate-400">
+<code class="text-sm font-mono text-slate-800">cosign sign --key cosign.key --attach-sbom=true my-registry/my-image:1.0</code>
+</div>
+</section>
+<!-- Section 3 -->
+<section>
+<h3 class="text-xl font-bold text-blue-800 mb-3 flex items-center gap-2">
+<span class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-sm">3</span>
+                            The Deployment (Helm + Registry)
+                        </h3>
+<p class="text-slate-700 leading-relaxed mb-4">
+                            Inside the air gap, you cannot reference `docker.io`. You must use a local registry (Harbor).
+                        </p>
+<p class="text-slate-700 mb-2">
+<strong>The Magic:</strong> Tools like Zarf run a "Mutating Webhook" inside your cluster. When you try to deploy a Helm chart that asks for `docker.io/nginx`, Zarf intercepts the request and rewrites it to `10.0.0.5:5000/nginx` (your air-gapped registry). This allows you to use standard Helm charts without modifying them manually.
+                        </p>
+</section>
+</div>
+</div>
+</div>
+</main>
+<!-- JavaScript Logic -->
+<script>
+        // Data for the Interactive Steps
+        const stepData = {
+            1: {
+                title: "Acquire & Hardening",
+                description: "The 'Low Side' is where we fetch dependencies from the internet.",
+                content: `
+                    <div class="space-y-4">
+                        <div class="bg-white border rounded-lg p-4">
+                            <h4 class="font-bold text-indigo-700 flex items-center gap-2"><span class="material-symbols-outlined">download</span> 1. Fetch Resources</h4>
+                            <p class="text-sm text-slate-600 mt-1">Use a tool to pull Helm Charts and Docker Images. Do not just <code>docker pull</code>; use a bundler.</p>
+                            <p class="text-xs text-slate-400 font-mono mt-2 bg-slate-50 p-2 rounded">zarf package create . --confirm</p>
+                        </div>
+                        <div class="bg-white border rounded-lg p-4">
+                            <h4 class="font-bold text-indigo-700 flex items-center gap-2"><span class="material-symbols-outlined">receipt_long</span> 2. Generate SBOM</h4>
+                            <p class="text-sm text-slate-600 mt-1">Scan the image to create a Software Bill of Materials (SPDX/CycloneDX).</p>
+                            <p class="text-xs text-slate-400 font-mono mt-2 bg-slate-50 p-2 rounded">syft packages docker:my-image -o spdx-json > sbom.json</p>
+                        </div>
+                         <div class="bg-indigo-50 p-3 rounded text-sm text-indigo-900 border border-indigo-100">
+                            <strong>Key Tool:</strong> <span class="font-mono">Syft</span> (from Anchore) is the industry standard for CLI SBOM generation.
+                        </div>
+                    </div>
+                `
+            },
+            2: {
+                title: "Sign & Provenance",
+                description: "Establish trust before the air gap.",
+                content: `
+                    <div class="space-y-4">
+                        <div class="bg-white border rounded-lg p-4">
+                            <h4 class="font-bold text-emerald-700 flex items-center gap-2"><span class="material-symbols-outlined">ink_pen</span> 1. Cosign Signing</h4>
+                            <p class="text-sm text-slate-600 mt-1">Cryptographically sign the image digest. This prevents tampering during the transfer.</p>
+                        </div>
+                        <div class="bg-white border rounded-lg p-4">
+                            <h4 class="font-bold text-emerald-700 flex items-center gap-2"><span class="material-symbols-outlined">description</span> 2. Attach Metadata</h4>
+                            <p class="text-sm text-slate-600 mt-1">Attach the SBOM and Provenance (SLSA) as "attestations" to the image in the OCI registry.</p>
+                            <p class="text-xs text-slate-400 font-mono mt-2 bg-slate-50 p-2 rounded">cosign attest --predicate sbom.json --key cosign.key my-image</p>
+                        </div>
+                         <div class="bg-emerald-50 p-3 rounded text-sm text-emerald-900 border border-emerald-100">
+                            <strong>Why?</strong> This ensures that even if the image is moved to a USB drive, its metadata travels with it inside the bundle.
+                        </div>
+                    </div>
+                `
+            },
+            3: {
+                title: "The Bundle (The Air Gap)",
+                description: "Crossing the void. This is the physical or logical separation.",
+                content: `
+                    <div class="space-y-4">
+                        <div class="bg-amber-50 border border-amber-200 rounded-lg p-4">
+                            <h4 class="font-bold text-amber-800 flex items-center gap-2"><span class="material-symbols-outlined">inventory</span> Single File Artifact</h4>
+                            <p class="text-sm text-amber-900 mt-1">Tools like Zarf create a compressed <span class="font-mono">.zst</span> or <span class="font-mono">.tar</span> file containing:</p>
+                            <ul class="list-disc list-inside text-xs text-amber-800 mt-2 space-y-1">
+                                <li>All Docker Image Layers</li>
+                                <li>All Helm Charts</li>
+                                <li>All Kubernetes Manifests</li>
+                                <li>SBOMs and Signatures</li>
+                                <li>Git Repos (optional)</li>
+                            </ul>
+                        </div>
+                        <div class="p-4 bg-white border rounded text-sm text-slate-600">
+                            <strong>Transfer Method:</strong> This file is typically burned to a DVD, copied to a secure hard drive, or passed through a high-assurance data diode.
+                        </div>
+                    </div>
+                `
+            },
+            4: {
+                title: "Ingest & Verify",
+                description: "Entering the 'High Side' (Disconnected Network).",
+                content: `
+                    <div class="space-y-4">
+                        <div class="bg-white border rounded-lg p-4">
+                            <h4 class="font-bold text-purple-700 flex items-center gap-2"><span class="material-symbols-outlined">unarchive</span> 1. Initialize Bundle</h4>
+                            <p class="text-sm text-slate-600 mt-1">The CLI tool (Zarf) runs on the air-gapped machine. It unpacks the images and pushes them to the local air-gapped registry (e.g., Harbor).</p>
+                        </div>
+                        <div class="bg-white border rounded-lg p-4">
+                            <h4 class="font-bold text-purple-700 flex items-center gap-2"><span class="material-symbols-outlined">verified_user</span> 2. Admission Control</h4>
+                            <p class="text-sm text-slate-600 mt-1">Before running, the cluster validates the signatures using a Policy Engine.</p>
+                            <div class="mt-2 text-xs bg-slate-50 p-2 border rounded">
+                                <span class="font-bold">Kyverno Policy:</span> <br>
+                                "Deny any image that does not have a valid Cosign signature from Public Key X."
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+             5: {
+                title: "Deploy & Runtime",
+                description: "Running the application securely.",
+                content: `
+                    <div class="space-y-4">
+                        <div class="bg-white border rounded-lg p-4">
+                            <h4 class="font-bold text-blue-700 flex items-center gap-2"><span class="material-symbols-outlined">rocket</span> 1. Helm Install</h4>
+                            <p class="text-sm text-slate-600 mt-1">Helm installs the chart. The tool automatically patches image references to point to the internal registry (e.g., <span class="font-mono">localhost:5000</span> or <span class="font-mono">harbor.internal</span>).</p>
+                        </div>
+                        <div class="bg-white border rounded-lg p-4">
+                            <h4 class="font-bold text-blue-700 flex items-center gap-2"><span class="material-symbols-outlined">monitor_heart</span> 2. Runtime Monitoring</h4>
+                            <p class="text-sm text-slate-600 mt-1">Tools like Falco monitor the running containers for suspicious activity.</p>
+                        </div>
+                        <div class="bg-blue-50 p-3 rounded text-sm text-blue-900 border border-blue-100">
+                            <strong>Success!</strong> You have deployed a signed, SBOM-verified application without a single internet connection.
+                        </div>
+                    </div>
+                `
+            }
+        };
+
+        // UI State Management
+        let activeView = 'pipeline';
+        let activeStep = null;
+        let isDropdownOpen = false;
+
+        function toggleUserMenu() {
+            const dropdown = document.getElementById('user-dropdown');
+            isDropdownOpen = !isDropdownOpen;
+            if (isDropdownOpen) {
+                dropdown.classList.remove('dropdown-enter');
+                dropdown.classList.add('dropdown-active');
+            } else {
+                dropdown.classList.remove('dropdown-active');
+                dropdown.classList.add('dropdown-enter');
+            }
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            const btn = document.getElementById('user-menu-btn');
+            const dropdown = document.getElementById('user-dropdown');
+            if (isDropdownOpen && !btn.contains(e.target) && !dropdown.contains(e.target)) {
+                toggleUserMenu();
+            }
+        });
+
+        async function syncToGitHub() {
+            const pat = document.getElementById('github-pat').value;
+            const statusEl = document.getElementById('sync-status');
+            const btn = document.getElementById('sync-btn');
+            const repo = "caretak3r/pocs";
+            const path = `air-gap-architect/index.html`;
+
+            if (!pat) {
+                statusEl.innerHTML = "<span class='text-red-500'>Please enter a PAT token</span>";
+                statusEl.classList.remove('hidden');
+                return;
+            }
+
+            statusEl.innerHTML = "<span class='text-blue-500 animate-pulse'>Syncing code...</span>";
+            statusEl.classList.remove('hidden');
+            btn.disabled = true;
+            btn.classList.add('opacity-50', 'cursor-not-allowed');
+
+            try {
+                // 1. Get the current file content (this HTML file)
+                const content = document.documentElement.outerHTML;
+                const base64Content = btoa(unescape(encodeURIComponent(content)));
+
+                // 2. Check if file exists to get SHA (for update)
+                let sha = null;
+                const checkRes = await fetch(`https://api.github.com/repos/${repo}/contents/${path}`, {
+                    headers: {
+                        'Authorization': `Bearer ${pat}`,
+                        'Accept': 'application/vnd.github+json',
+                        'X-GitHub-Api-Version': '2022-11-28'
+                    }
+                });
+
+                if (checkRes.ok) {
+                    const data = await checkRes.json();
+                    sha = data.sha;
+                }
+
+                // 3. PUT request to create/update
+                const body = {
+                    message: "feat: sync air-gap architect poc code",
+                    committer: {
+                        name: "AirGap Architect Tool",
+                        email: "tool@localhost"
+                    },
+                    content: base64Content
+                };
+                
+                if (sha) body.sha = sha;
+
+                const response = await fetch(`https://api.github.com/repos/${repo}/contents/${path}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Authorization': `Bearer ${pat}`,
+                        'Accept': 'application/vnd.github+json',
+                        'Content-Type': 'application/json',
+                        'X-GitHub-Api-Version': '2022-11-28'
+                    },
+                    body: JSON.stringify(body)
+                });
+
+                if (response.ok) {
+                    statusEl.innerHTML = `<span class='text-green-600 flex items-center justify-center gap-1'><span class="material-symbols-outlined text-sm">check_circle</span> Success! Code exported.</span>`;
+                } else {
+                    const error = await response.json();
+                    throw new Error(error.message);
+                }
+            } catch (err) {
+                statusEl.innerHTML = `<span class='text-red-500'>Error: ${err.message}</span>`;
+            } finally {
+                btn.disabled = false;
+                btn.classList.remove('opacity-50', 'cursor-not-allowed');
+            }
+        }
+
+        function switchView(viewName) {
+            // Update buttons
+            document.querySelectorAll('header button:not(#user-menu-btn)').forEach(btn => {
+                btn.className = "px-3 py-1.5 rounded-full hover:bg-slate-800 text-slate-300 transition";
+            });
+            const activeBtn = document.getElementById(`btn-${viewName}`);
+            activeBtn.className = "px-3 py-1.5 rounded-full bg-blue-600 text-white transition";
+
+            // Hide all views
+            ['pipeline', 'tools', 'guide'].forEach(v => {
+                const el = document.getElementById(`view-${v}`);
+                el.style.opacity = '0';
+                el.style.pointerEvents = 'none';
+            });
+
+            // Show active view
+            setTimeout(() => {
+                const view = document.getElementById(`view-${viewName}`);
+                view.style.opacity = '1';
+                view.style.pointerEvents = 'auto';
+            }, 100);
+        }
+
+        function selectStep(stepId) {
+            activeStep = stepId;
+            const data = stepData[stepId];
+            
+            // Highlight node
+            document.querySelectorAll('.step-node').forEach(node => {
+                node.classList.remove('node-active');
+            });
+            // Hacky selector for demo
+            const buttons = document.querySelectorAll('#view-pipeline .step-node');
+            if(buttons[stepId-1]) buttons[stepId-1].classList.add('node-active');
+
+
+            // Update Detail Content
+            const container = document.getElementById('detail-content');
+            container.innerHTML = `
+                <div class="animate-fade-in">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-lg">${stepId}</div>
+                        <div>
+                            <h2 class="text-2xl font-bold text-slate-800">${data.title}</h2>
+                            <p class="text-slate-500">${data.description}</p>
+                        </div>
+                    </div>
+                    <div class="bg-slate-50 rounded-xl p-6 border border-slate-100">
+                        ${data.content}
+                    </div>
+                </div>
+            `;
+        }
+    </script>
+
+</body></html>
