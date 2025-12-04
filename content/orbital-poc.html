@@ -630,36 +630,7 @@ wb);O(IMG_SEARCH_ATTRIBUTION_MAP,Pd);O(IMG_GEN_REPLACE_MAP,fa.A);X();jf();h.A=0}
         </button>
     </div>
     <div class="p-6 space-y-4">
-        <p class="text-xs text-slate-400">Save the current POC application as <code class="bg-slate-800 px-1 rounded">index.html</code> to a new folder in your repository.</p>
-        
-        <div class="space-y-1">
-            <label class="text-xs font-mono text-cyan-500 uppercase">GitHub Personal Access Token</label>
-            <input type="password" id="gh-pat" placeholder="ghp_..." class="w-full bg-slate-950 border border-slate-700 rounded px-3 py-2 text-sm focus:border-cyan-500 focus:outline-none transition-colors font-mono">
-            <p class="text-[10px] text-slate-500">Token needs 'repo' scope.</p>
-        </div>
-
-        <div class="space-y-1">
-            <label class="text-xs font-mono text-cyan-500 uppercase">Repository (Owner/Repo)</label>
-            <input type="text" id="gh-repo" placeholder="username/repository" class="w-full bg-slate-950 border border-slate-700 rounded px-3 py-2 text-sm focus:border-cyan-500 focus:outline-none transition-colors font-mono">
-        </div>
-
-        <div class="grid grid-cols-2 gap-4">
-            <div class="space-y-1">
-                <label class="text-xs font-mono text-cyan-500 uppercase">Branch</label>
-                <input type="text" id="gh-branch" value="main" class="w-full bg-slate-950 border border-slate-700 rounded px-3 py-2 text-sm focus:border-cyan-500 focus:outline-none transition-colors font-mono">
-            </div>
-            <div class="space-y-1">
-                <label class="text-xs font-mono text-cyan-500 uppercase">Folder Name</label>
-                <input type="text" id="gh-path" value="orbital-poc-v1" class="w-full bg-slate-950 border border-slate-700 rounded px-3 py-2 text-sm focus:border-cyan-500 focus:outline-none transition-colors font-mono">
-            </div>
-        </div>
-
-        <div id="export-status" class="p-3 rounded bg-slate-800/50 text-xs font-mono border border-slate-700 text-cyan-400">PREPARING PAYLOAD...</div>
-
-        <button onclick="exportToGithub()" class="w-full bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-2 rounded shadow-[0_0_15px_rgba(6,182,212,0.5)] transition-all uppercase tracking-widest text-sm flex justify-center items-center gap-2">
-            <span class="material-symbols-outlined text-sm">terminal</span>
-            INITIATE UPLOAD
-        </button>
+        <p class="text-xs text-slate-400">External integrations are disabled for security purposes.</p>
     </div>
 </dialog>
 
@@ -1103,72 +1074,7 @@ wb);O(IMG_SEARCH_ATTRIBUTION_MAP,Pd);O(IMG_GEN_REPLACE_MAP,fa.A);X();jf();h.A=0}
 
         // --- EXPORT LOGIC ---
         
-        async function exportToGithub() {
-            const pat = document.getElementById('gh-pat').value.trim();
-            const repo = document.getElementById('gh-repo').value.trim();
-            const branch = document.getElementById('gh-branch').value.trim() || 'main';
-            const folder = document.getElementById('gh-path').value.trim() || 'orbital-poc';
-            const statusEl = document.getElementById('export-status');
-            
-            if (!pat || !repo) {
-                statusEl.classList.remove('hidden', 'text-green-400');
-                statusEl.classList.add('text-red-400');
-                statusEl.innerText = 'ERROR: PAT and Repository are required.';
-                return;
-            }
-
-            statusEl.classList.remove('hidden', 'text-red-400');
-            statusEl.classList.add('text-cyan-400');
-            statusEl.innerText = 'PREPARING PAYLOAD...';
-
-            try {
-                // 1. Get current DOM
-                const htmlContent = document.documentElement.outerHTML;
-                
-                // 2. Encode to Base64 (handle UTF-8)
-                const contentEncoded = btoa(unescape(encodeURIComponent(htmlContent)));
-                
-                // 3. Construct API URL
-                // We create a new file named index.html in the specified folder
-                const path = `${folder}/index.html`;
-                const url = `https://api.github.com/repos/${repo}/contents/${path}`;
-                
-                statusEl.innerText = `CONNECTING TO ${repo}...`;
-
-                const body = {
-                    message: `Export Orbital Hegemony POC - ${new Date().toISOString()}`,
-                    content: contentEncoded,
-                    branch: branch
-                };
-
-                // 4. Send Request
-                const response = await fetch(url, {
-                    method: 'PUT',
-                    headers: {
-                        'Authorization': `Bearer ${pat}`,
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/vnd.github+json'
-                    },
-                    body: JSON.stringify(body)
-                });
-
-                if (response.ok) {
-                    const data = await response.json();
-                    statusEl.classList.remove('text-cyan-400');
-                    statusEl.classList.add('text-green-400');
-                    statusEl.innerHTML = `UPLOAD SUCCESS!<br><a href="${data.content.html_url}" target="_blank" class="underline hover:text-white">View on GitHub</a>`;
-                } else {
-                    const error = await response.json();
-                    throw new Error(error.message);
-                }
-
-            } catch (err) {
-                statusEl.classList.remove('text-cyan-400');
-                statusEl.classList.add('text-red-400');
-                statusEl.innerText = `FAILED: ${err.message}`;
-                console.error(err);
-            }
-        }
+        // GitHub export functionality removed for security
 
         // Init
         initList();

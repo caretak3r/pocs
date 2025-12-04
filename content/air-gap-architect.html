@@ -113,22 +113,9 @@ a);requestAnimationFrame(function(){g(document.body)})})}var l=["material-icons"
 <div class="text-xs text-slate-500">Manage integrations</div>
 </div>
 </div>
-<div class="space-y-4">
-<div>
-<label class="block text-xs font-bold text-slate-500 uppercase mb-1">GitHub PAT Token</label>
-<input class="w-full px-3 py-2 text-sm border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" id="github-pat" placeholder="ghp_xxxxxxxxxxxx" type="password">
-<p class="text-[10px] text-slate-400 mt-1">Token requires <code>repo</code> scope.</p>
-</div>
-<div class="bg-slate-50 p-3 rounded text-xs text-slate-600 border border-slate-100">
-<p class="mb-1"><strong>Target Repo:</strong></p>
-<code class="text-blue-600">caretak3r/pocs</code>
-</div>
-<button class="w-full bg-slate-900 hover:bg-slate-800 text-white text-sm font-medium py-2 rounded-lg flex items-center justify-center gap-2 transition opacity-50 cursor-not-allowed" id="sync-btn" onclick="syncToGitHub()" disabled="">
-<span class="material-symbols-outlined text-base">sync</span>
-                                Sync &amp; Export Code
-                            </button>
-<div class="text-xs text-center" id="sync-status"><span class="text-blue-500 animate-pulse">Syncing code...</span></div>
-</div>
+<div class="space-y-4 text-sm text-slate-600">
+                <p class="italic">User settings and integrations are disabled for secure air-gapped environments.</p>
+            </div>
 </div>
 </div>
 </div>
@@ -574,80 +561,7 @@ a);requestAnimationFrame(function(){g(document.body)})})}var l=["material-icons"
             }
         });
 
-        async function syncToGitHub() {
-            const pat = document.getElementById('github-pat').value;
-            const statusEl = document.getElementById('sync-status');
-            const btn = document.getElementById('sync-btn');
-            const repo = "caretak3r/pocs";
-            const path = `air-gap-architect/index.html`;
-
-            if (!pat) {
-                statusEl.innerHTML = "<span class='text-red-500'>Please enter a PAT token</span>";
-                statusEl.classList.remove('hidden');
-                return;
-            }
-
-            statusEl.innerHTML = "<span class='text-blue-500 animate-pulse'>Syncing code...</span>";
-            statusEl.classList.remove('hidden');
-            btn.disabled = true;
-            btn.classList.add('opacity-50', 'cursor-not-allowed');
-
-            try {
-                // 1. Get the current file content (this HTML file)
-                const content = document.documentElement.outerHTML;
-                const base64Content = btoa(unescape(encodeURIComponent(content)));
-
-                // 2. Check if file exists to get SHA (for update)
-                let sha = null;
-                const checkRes = await fetch(`https://api.github.com/repos/${repo}/contents/${path}`, {
-                    headers: {
-                        'Authorization': `Bearer ${pat}`,
-                        'Accept': 'application/vnd.github+json',
-                        'X-GitHub-Api-Version': '2022-11-28'
-                    }
-                });
-
-                if (checkRes.ok) {
-                    const data = await checkRes.json();
-                    sha = data.sha;
-                }
-
-                // 3. PUT request to create/update
-                const body = {
-                    message: "feat: sync air-gap architect poc code",
-                    committer: {
-                        name: "AirGap Architect Tool",
-                        email: "tool@localhost"
-                    },
-                    content: base64Content
-                };
-                
-                if (sha) body.sha = sha;
-
-                const response = await fetch(`https://api.github.com/repos/${repo}/contents/${path}`, {
-                    method: 'PUT',
-                    headers: {
-                        'Authorization': `Bearer ${pat}`,
-                        'Accept': 'application/vnd.github+json',
-                        'Content-Type': 'application/json',
-                        'X-GitHub-Api-Version': '2022-11-28'
-                    },
-                    body: JSON.stringify(body)
-                });
-
-                if (response.ok) {
-                    statusEl.innerHTML = `<span class='text-green-600 flex items-center justify-center gap-1'><span class="material-symbols-outlined text-sm">check_circle</span> Success! Code exported.</span>`;
-                } else {
-                    const error = await response.json();
-                    throw new Error(error.message);
-                }
-            } catch (err) {
-                statusEl.innerHTML = `<span class='text-red-500'>Error: ${err.message}</span>`;
-            } finally {
-                btn.disabled = false;
-                btn.classList.remove('opacity-50', 'cursor-not-allowed');
-            }
-        }
+        // GitHub sync functionality removed for secure air-gapped environments
 
         function switchView(viewName) {
             // Update buttons

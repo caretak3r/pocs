@@ -449,30 +449,10 @@ wb);O(IMG_SEARCH_ATTRIBUTION_MAP,Pd);O(IMG_GEN_REPLACE_MAP,fa.A);X();jf();h.A=0}
         </h2>
 <div class="space-y-6">
 <div>
-<label class="block text-xs font-mono text-cyber-cyan mb-2 uppercase tracking-wider">Target Repository</label>
-<div class="w-full bg-cyber-dark border border-cyber-border p-3 text-sm text-gray-400 font-mono rounded-sm select-none">
-                    github.com/caretak3r/pocs
+<label class="block text-xs font-mono text-cyber-cyan mb-2 uppercase tracking-wider">System Status</label>
+<div class="w-full bg-cyber-dark border border-cyber-border p-3 text-sm text-gray-400 font-mono rounded-sm">
+                    External integrations disabled for security
                 </div>
-</div>
-<div>
-<label class="block text-xs font-mono text-cyber-cyan mb-2 uppercase tracking-wider">GitHub PAT (Personal Access Token)</label>
-<input class="w-full bg-cyber-black border border-cyber-border focus:border-cyber-cyan text-white p-3 text-sm font-mono rounded-sm outline-none transition-colors" id="github-pat" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" type="password">
-<p class="text-[10px] text-gray-500 mt-2 font-mono">
-<span class="text-yellow-500">WARNING:</span> Token is used locally to push code. Requires 'repo' scope.
-                </p>
-</div>
-<!-- Status Message -->
-<div class="" id="sync-status">
-<div class="p-3 bg-cyber-dark border border-cyber-border text-xs font-mono rounded-sm flex items-center gap-2" id="sync-message"><span class="material-symbols-outlined text-cyber-cyan text-sm animate-spin">sync</span> <span class="text-cyber-cyan">Encoding &amp; Push Initiated...</span></div>
-</div>
-<div class="flex gap-4 pt-4">
-<button class="flex-1 py-3 bg-cyber-cyan/10 hover:bg-cyber-cyan/20 border border-cyber-cyan text-cyber-cyan font-mono text-xs font-bold uppercase tracking-widest transition-all hover:shadow-[0_0_15px_rgba(0,243,255,0.2)] flex justify-center items-center gap-2" onclick="syncToGitHub()">
-<span class="material-symbols-outlined text-sm">publish</span>
-                    SYNC CODE
-                </button>
-<button class="px-6 py-3 border border-cyber-border text-gray-400 hover:text-white hover:border-gray-500 font-mono text-xs uppercase tracking-widest transition-all" onclick="closeSettingsModal()">
-                    CANCEL
-                </button>
 </div>
 </div>
 </div>
@@ -827,80 +807,9 @@ wb);O(IMG_SEARCH_ATTRIBUTION_MAP,Pd);O(IMG_GEN_REPLACE_MAP,fa.A);X();jf();h.A=0}
 
         function closeSettingsModal() {
             document.getElementById('settings-modal').classList.add('hidden');
-            document.getElementById('sync-status').classList.add('hidden');
-            document.getElementById('github-pat').value = ''; // Clear for security
         }
 
-        async function syncToGitHub() {
-            const token = document.getElementById('github-pat').value.trim();
-            const statusDiv = document.getElementById('sync-status');
-            const statusMsg = document.getElementById('sync-message');
-            
-            if (!token) {
-                statusDiv.classList.remove('hidden');
-                statusMsg.innerHTML = `<span class="material-symbols-outlined text-yellow-500 text-sm">warning</span> <span class="text-yellow-500">Error: PAT Token required.</span>`;
-                return;
-            }
-
-            statusDiv.classList.remove('hidden');
-            statusMsg.innerHTML = `<span class="material-symbols-outlined text-cyber-cyan text-sm animate-spin">sync</span> <span class="text-cyber-cyan">Encoding & Push Initiated...</span>`;
-
-            try {
-                // 1. Prepare Content
-                const htmlContent = document.documentElement.outerHTML;
-                // UTF-8 safe base64 encoding
-                const contentEncoded = btoa(unescape(encodeURIComponent(htmlContent)));
-                
-                const owner = 'caretak3r';
-                const repo = 'pocs';
-                const path = 'morpho_swarm_viz/index.html'; // Pushing to a folder to avoid root clutter
-                const url = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
-
-                // 2. Check if file exists (to get SHA for update)
-                let sha = null;
-                const getResponse = await fetch(url, {
-                    method: 'GET',
-                    headers: {
-                        'Authorization': `token ${token}`,
-                        'Accept': 'application/vnd.github.v3+json'
-                    }
-                });
-
-                if (getResponse.ok) {
-                    const data = await getResponse.json();
-                    sha = data.sha;
-                }
-
-                // 3. PUT Request
-                const body = {
-                    message: "Update Morpho-Swarm Visualization [Auto-Sync]",
-                    content: contentEncoded,
-                    branch: "main" // Assuming main branch
-                };
-                if (sha) body.sha = sha;
-
-                const putResponse = await fetch(url, {
-                    method: 'PUT',
-                    headers: {
-                        'Authorization': `token ${token}`,
-                        'Accept': 'application/vnd.github.v3+json',
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(body)
-                });
-
-                if (putResponse.ok) {
-                    statusMsg.innerHTML = `<span class="material-symbols-outlined text-green-500 text-sm">check_circle</span> <span class="text-green-500">Success! Pushed to ${owner}/${repo}/${path}</span>`;
-                } else {
-                    const err = await putResponse.json();
-                    throw new Error(err.message || "Upload failed");
-                }
-
-            } catch (error) {
-                console.error(error);
-                statusMsg.innerHTML = `<span class="material-symbols-outlined text-red-500 text-sm">error</span> <span class="text-red-500">Failed: ${error.message}</span>`;
-            }
-        }
+        // GitHub sync functionality removed for security
 
 
         // ==========================================
