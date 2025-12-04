@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PoCs Collection</title>
+    <title>PoCs Portal</title>
     <style>
         * {
             margin: 0;
@@ -12,73 +12,210 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            font-family: 'Courier New', 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', monospace;
+            background: #000;
             min-height: 100vh;
-            color: #e0e0e0;
+            color: #00ff00;
+            overflow-x: hidden;
+        }
+
+        /* Animated sunset background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 80% 20%, #ff6b35 0%, #cf0000 30%, #ff4500 50%, #b22222 70%, #1a0000 100%);
+            opacity: 0.4;
+            z-index: -2;
+            animation: sunsetPulse 20s ease-in-out infinite;
+        }
+
+        @keyframes sunsetPulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+
+        /* Matrix rain effect */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 255, 0, 0.03) 0px,
+                transparent 1px,
+                transparent 2px,
+                rgba(0, 255, 0, 0.03) 3px
+            );
+            z-index: -1;
+            animation: matrixScroll 3s linear infinite;
+        }
+
+        @keyframes matrixScroll {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(3px); }
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 60px 40px;
+            background: rgba(0, 0, 0, 0.8);
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .terminal-header {
+            background: #1a1a1a;
+            padding: 8px 16px;
+            border-radius: 8px 8px 0 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid #333;
+            border-bottom: none;
+        }
+
+        .terminal-button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .terminal-button.red { background: #ff5f57; }
+        .terminal-button.yellow { background: #ffbd2e; }
+        .terminal-button.green { background: #28ca42; }
+
+        .terminal-content {
+            background: #0a0a0a;
+            border: 1px solid #333;
+            border-top: none;
+            border-radius: 0 0 8px 8px;
+            padding: 40px;
         }
 
         header {
-            text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 80px;
         }
 
         h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            font-size: 2.5rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 3px;
             margin-bottom: 16px;
+            text-shadow: 0 0 20px #00ff00;
+            animation: textFlicker 2s infinite alternate;
+        }
+
+        @keyframes textFlicker {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
         }
 
         .subtitle {
-            font-size: 1.2rem;
+            font-size: 1rem;
             color: #888;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 1.2rem;
+            background: #00ff00;
+            animation: cursorBlink 1s infinite;
+        }
+
+        @keyframes cursorBlink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
         }
 
         .poc-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 24px;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
         }
 
         .poc-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 28px;
+            background: #0f0f0f;
+            border: 1px solid #333;
+            padding: 30px;
             transition: all 0.3s ease;
             cursor: pointer;
             text-decoration: none;
             display: block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .poc-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 0, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .poc-card:hover::before {
+            left: 100%;
         }
 
         .poc-card:hover {
-            transform: translateY(-4px);
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(102, 126, 234, 0.5);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: #00ff00;
+            background: #1a1a1a;
+            box-shadow: 0 0 30px rgba(0, 255, 0, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .poc-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .poc-icon {
+            width: 40px;
+            height: 40px;
+            border: 2px solid #00ff00;
+            border-radius: 8px;
+            margin-right: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
         }
 
         .poc-card h2 {
-            font-size: 1.4rem;
-            color: #fff;
-            margin-bottom: 12px;
+            font-size: 1.3rem;
+            color: #00ff00;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .poc-card p {
-            color: #999;
+            color: #666;
             line-height: 1.6;
-            margin-bottom: 16px;
-            font-size: 0.95rem;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+
+        .poc-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .tags {
@@ -88,46 +225,52 @@
         }
 
         .tag {
-            background: rgba(102, 126, 234, 0.2);
-            color: #a0b0ff;
+            background: rgba(0, 255, 0, 0.1);
+            color: #00ff00;
             padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            border: 1px solid rgba(102, 126, 234, 0.3);
+            border-radius: 4px;
+            font-size: 0.75rem;
+            border: 1px solid rgba(0, 255, 0, 0.3);
+            text-transform: uppercase;
         }
 
-        .arrow {
-            float: right;
-            color: #667eea;
+        .link-arrow {
+            color: #00ff00;
             font-size: 1.5rem;
             transition: transform 0.3s ease;
         }
 
-        .poc-card:hover .arrow {
-            transform: translateX(4px);
+        .poc-card:hover .link-arrow {
+            transform: translateX(5px);
         }
 
         footer {
             text-align: center;
-            margin-top: 60px;
+            margin-top: 80px;
             padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid #333;
             color: #666;
         }
 
         footer a {
-            color: #667eea;
+            color: #00ff00;
             text-decoration: none;
+            transition: color 0.3s ease;
         }
 
         footer a:hover {
-            text-decoration: underline;
+            color: #00cc00;
         }
 
-        @media (max-width: 640px) {
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 20px;
+            }
+            
             h1 {
                 font-size: 2rem;
             }
+            
             .poc-grid {
                 grid-template-columns: 1fr;
             }
@@ -136,49 +279,61 @@
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>🧪 PoCs Collection</h1>
-            <p class="subtitle">Proof-of-concept projects and technical experiments</p>
-        </header>
+        <div class="terminal-header">
+            <div class="terminal-button red"></div>
+            <div class="terminal-button yellow"></div>
+            <div class="terminal-button green"></div>
+        </div>
+        <div class="terminal-content">
+            <header>
+                <h1>> PoCs Portal<span class="cursor"></span></h1>
+                <p class="subtitle">[ Developer Projects & Experiments ]</p>
+            </header>
 
-        <div class="poc-grid" id="pocGrid"></div>
+            <div class="poc-grid" id="pocGrid"></div>
 
-        <footer>
-            <p>Built with ❤️ | <a href="https://github.com/caretak3r/pocs" target="_blank">View on GitHub</a></p>
-        </footer>
+            <footer>
+                <p>// <a href="https://github.com/caretak3r/pocs" target="_blank">github.com/caretak3r/pocs</a></p>
+            </footer>
+        </div>
     </div>
 
     <script>
         const pocs = [
             {
-                name: "Sentinel UI",
-                description: "A modern security dashboard with real-time monitoring, threat detection, and comprehensive security analytics.",
+                name: ">> SENTINEL_UI",
+                description: "[ Security Dashboard ] Real-time monitoring + threat detection + comprehensive analytics",
                 path: "sentinel-ui/",
-                tags: ["Security", "Dashboard", "Monitoring"]
+                tags: ["security", "dashboard", "monitoring"],
+                icon: "⚡"
             },
             {
-                name: "Defensibility Dashboard",
-                description: "Market intelligence platform analyzing competitive moats, S&P 500 wide moat index tracking, and investment defensibility metrics.",
+                name: ">> DEFENSIBILITY_DASHBOARD", 
+                description: "[ Market Intelligence ] Competitive moats + S&P 500 tracking + investment metrics",
                 path: "defensibility-dashboard/",
-                tags: ["Finance", "Analytics", "Market Intelligence"]
+                tags: ["finance", "analytics", "market"],
+                icon: "📊"
             },
             {
-                name: "Air-Gap Architect",
-                description: "Architecture visualization tool for air-gapped and isolated network environments with security boundary mapping.",
+                name: ">> AIR_GAP_ARCHITECT",
+                description: "[ Network Security ] Air-gap visualization + isolated systems + boundary mapping", 
                 path: "air-gap-architect/",
-                tags: ["Architecture", "Security", "Visualization"]
+                tags: ["architecture", "security", "viz"],
+                icon: "🔐"
             },
             {
-                name: "Morpho Swarm Viz",
-                description: "Swarm intelligence and morphological visualization system for distributed computing patterns.",
-                path: "morpho_swarm_viz/",
-                tags: ["Visualization", "Swarm", "Distributed Systems"]
+                name: ">> MORPHO_SWARM_VIZ",
+                description: "[ Distributed Systems ] Swarm intelligence + morphological patterns + collective behavior",
+                path: "morpho_swarm_viz/", 
+                tags: ["visualization", "swarm", "distributed"],
+                icon: "🎯"
             },
             {
-                name: "K8s Visualizer",
-                description: "Kubernetes cluster visualization tool for understanding pod distributions, services, and cluster topology.",
+                name: ">> K8S_VISUALIZER",
+                description: "[ Kubernetes ] Cluster topology + pod distributions + service mapping",
                 path: "k8s-visualizer/",
-                tags: ["Kubernetes", "DevOps", "Infrastructure"]
+                tags: ["kubernetes", "devops", "infra"], 
+                icon: "☸️"
             }
         ];
 
@@ -186,11 +341,16 @@
             const grid = document.getElementById('pocGrid');
             grid.innerHTML = pocs.map(poc => `
                 <a href="${poc.path}" class="poc-card">
-                    <span class="arrow">→</span>
-                    <h2>${poc.name}</h2>
+                    <div class="poc-header">
+                        <div class="poc-icon">${poc.icon}</div>
+                        <h2>${poc.name}</h2>
+                    </div>
                     <p>${poc.description}</p>
-                    <div class="tags">
-                        ${poc.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                    <div class="poc-info">
+                        <div class="tags">
+                            ${poc.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                        </div>
+                        <span class="link-arrow">››</span>
                     </div>
                 </a>
             `).join('');
